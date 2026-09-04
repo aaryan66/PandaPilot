@@ -42,7 +42,7 @@ return(
     <div className="w-full max-w-xl border border-line rounded-md bg-white">
         <div className="p-4 h-40 w- 50 overflow-y-auto overflow-x-auto">
            {messages.length === 0 ? (
-            <p className="text-graphite text-center">In [ 0 ]: Your Pilot is ready for a analytics flight with Pandas</p>
+            <p className="text-graphite text-center">Your Pilot is ready for a analytics flight with Pandas</p>
            ) : null}
 
            {messages.map((message, index) => 
@@ -51,10 +51,30 @@ return(
             }`} >  
             {message.role === "user" ? "In" : "Out"} [{index}]: {message.text}
           </p>))}
-        </div>
+
+
+          {isLoading && (
+            <p className="text-sm font-mono text-graphite">Out [{messages.length}]: Your Pilot is thinking...</p>
+          )}
+            </div>
+
+      <div className="border-t border-line flex items-center px-4 py-3">
+        <span className="text-bamboo font-mono text-sm mr-2">In [ ]:</span>
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSend()}
+          placeholder="Try asking me some pandas stuffs here"
+          className="flex-1 bg-transparent outline-none text-ink font-mono text-sm placeholder:text-graphite"
+        />
+        <button
+          onClick={handleSend}
+          disabled={isLoading}
+          className="text-white bg-bamboo text-sm px-3 py-1 rounded hover:opacity-90 disabled:opacity-50"
+        >
+          Send
+        </button>
+      </div>
     </div>
-)
-
-
-
-}
+  );
+} 
