@@ -6,10 +6,15 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: #F7F7F5;
+  --color-ink: #17171A;
+  --color-graphite: #6B6B68;
+  --color-bamboo: #3F6B4A;
+  --color-line: #E4E3DF;
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
 }
 
 @media (prefers-color-scheme: dark) {
