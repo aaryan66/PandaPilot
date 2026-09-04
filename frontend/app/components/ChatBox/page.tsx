@@ -18,6 +18,26 @@ export default function ChatBox() {
         });
         setInput("");
         setIsLoading(true);
-        
-    } 
+
+
+        try { 
+            // Handling api requests
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: input }),
+            });
+            const data = await response.json();
+            const assistantMessage: Message = { role: "assistant", text: data.reply };
+        }
+        catch (error) {
+            console.error("Error sending message:", error);
+        } 
+        finally {
+            setIsLoading(false);
+        }
+}
+
+
+
 }
