@@ -38,6 +38,16 @@ export default function ChatBox() {
         }
 }
 
+return( 
+    <div className="w-full max-w-xl border border-line rounded-md bg-white">
+        <div className="p-4 h-40 w- 50 overflow-y-auto overflow-x-auto">
+           {messages.length === 0 ? (
+            <p className="text-graphite text-center">In [ 0 ]: Your Pilot is ready for a analytics flight with Pandas</p>
+           ) : null}
+        </div>
+    </div>
+)
+
 
 
 }
