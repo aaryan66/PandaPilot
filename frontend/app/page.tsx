@@ -11,7 +11,7 @@ export default function Home() {
           Your co-pilot for pandas.
         </p>
       </div>
-      {/* <ChatBox /> */}
+      <ChatBox />
     </main>
   );
 }
