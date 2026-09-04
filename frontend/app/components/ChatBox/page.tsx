@@ -44,6 +44,13 @@ return(
            {messages.length === 0 ? (
             <p className="text-graphite text-center">In [ 0 ]: Your Pilot is ready for a analytics flight with Pandas</p>
            ) : null}
+
+           {messages.map((message, index) => 
+           (<p key = {index} className = {`text-sm font-mono ${
+              message.role === "user" ? "text-ink" : "text-bamboo"
+            }`} >  
+            {message.role === "user" ? "In" : "Out"} [{index}]: {message.text}
+          </p>))}
         </div>
     </div>
 )
