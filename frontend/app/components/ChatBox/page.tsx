@@ -13,8 +13,9 @@ export default function ChatBox() {
     async function handleSend() {
         if (!input.trim()) return;
         const newMessage: Message = { role: "user", text: input };
+        const assistantMessage: Message = { role: "assistant", text: "n8n is yet to be connected" };
         setMessages(function(prevMessages) { 
-            return [...prevMessages, newMessage];
+            return [...prevMessages, newMessage, assistantMessage,];
         });
         setInput("");
         setIsLoading(true);
