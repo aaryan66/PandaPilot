@@ -23,7 +23,7 @@ export default function ChatBox() {
 
         try { 
             // Handling api requests
-            const response = await fetch("/api/chat", {
+            const response = await fetch("./backend/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: input }),

@@ -8,7 +8,7 @@ export default function Home() {
           PandaPilot
         </h1>
         <p className="text-graphite mt-3 text-xl">
-          Your co-pilot for pandas.
+          Your documentation based co-pilot for <br/> Pandas - A python library for data analysis and manipulation.
         </p>
       </div>
       <ChatBox />
