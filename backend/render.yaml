@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: rag-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_BASE_URL
+        value: https://api.groq.com/openai/v1
+      - key: OPENAI_MODEL
+        value: llama-3.1-8b-instant
+      - key: PINECONE_API_KEY
+        sync: false
+      - key: PINECONE_INDEX
+        value: rag-boilerplate
+      - key: PINECONE_NAMESPACE
+        value: default
+      - key: EMBEDDING_MODEL
+        value: Xenova/all-MiniLM-L6-v2
+      - key: TOP_K
+        value: 4
