@@ -1,5 +1,6 @@
 "use client"; 
 import { useState } from "react";
+import { sendMessage } from "@/app/lib/chat";
 
 type Message = {
   role: "user" | "assistant";
@@ -13,9 +14,14 @@ export default function ChatBox() {
     async function handleSend() {
         if (!input.trim()) return;
         const newMessage: Message = { role: "user", text: input };
-        const assistantMessage: Message = { role: "assistant", text: "n8n is yet to be connected" };
+
+      // const assistantMessage: Message = { role: "assistant", text: "n8n is yet to be connected" };
+    const history = messages.map((message) => ({
+    role: message.role,
+    content: message.text,
+    }));
         setMessages(function(prevMessages) { 
-            return [...prevMessages, newMessage, assistantMessage,];
+            return [...prevMessages, newMessage];
         });
         setInput("");
         setIsLoading(true);
@@ -23,13 +29,8 @@ export default function ChatBox() {
 
         try { 
             // Handling api requests
-            const response = await fetch("./backend/", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: input }),
-            });
-            const data = await response.json();
-            const assistantMessage: Message = { role: "assistant", text: data.reply };
+            
+            
         }
         catch (error) {
             console.error("Error sending message:", error);
