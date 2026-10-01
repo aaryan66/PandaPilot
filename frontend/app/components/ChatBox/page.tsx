@@ -16,10 +16,10 @@ export default function ChatBox() {
         const newMessage: Message = { role: "user", text: input };
 
       // const assistantMessage: Message = { role: "assistant", text: "n8n is yet to be connected" };
-    const history = messages.map((message) => ({
-    role: message.role,
-    content: message.text,
-    }));
+    // const history = messages.map((message) => ({
+    // role: message.role,
+    // content: message.text,
+    // }));
         setMessages(function(prevMessages) { 
             return [...prevMessages, newMessage];
         });
@@ -30,7 +30,21 @@ export default function ChatBox() {
         try { 
             // Handling api requests
             
-            
+            const history = messages.map((message) => ({
+              role: message.role, 
+              content: message.text
+            }))
+
+            const data = await sendMessage(input, history)
+            const assistant:Message = {
+              role: "assistant",
+              text : data.answer,
+            };
+
+            setMessages((prevMessages) => [
+              ...prevMessages,
+              assistant , 
+            ]);
         }
         catch (error) {
             console.error("Error sending message:", error);
