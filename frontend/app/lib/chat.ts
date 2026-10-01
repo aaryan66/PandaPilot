@@ -10,11 +10,12 @@ export async function sendMessage(
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ message, history }),
-    }
+    }   
   );
 
   if (!res.ok) {
-    throw new Error("Chat request failed");
+    const errorText  = await res.text().catch(() => "Unknown"); 
+    throw new Error(`Chat request failed (${res.status}): ${errorText}`);
   }
 
   return res.json() as Promise<{
