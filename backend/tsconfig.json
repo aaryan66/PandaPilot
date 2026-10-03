@@ -8,8 +8,8 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2021",
     "sourceMap": false,
+    "rootDir": "./src",
     "outDir": "./dist",
-    "baseUrl": "./",
     "incremental": false,
     "skipLibCheck": true,
     "strictNullChecks": true,
@@ -19,5 +19,6 @@
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true,
     "resolveJsonModule": true
-  }
+  },
+  "include": ["src/**/*"]
 }
